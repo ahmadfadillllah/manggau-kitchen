@@ -8,6 +8,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ProdukOrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,12 +27,15 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/login_page', [AuthController::class, 'login_page'])->name('login');
+Route::get('/login_page', [AuthController::class, 'login_page'])->name('login_page');
 Route::post('/login_page/post', [AuthController::class, 'login_page_post'])->name('login_page.post');
+
+Route::get('/login_qrcode', [AuthController::class, 'login_qrcode'])->name('login');
+Route::post('/login_qrcode/post', [AuthController::class, 'login_qrcode_post'])->name('login_qrcode.post');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::group(['middleware' => ['auth', 'checkRole:owner,meja']], function(){
+Route::group(['middleware' => ['auth', 'checkRole:owner,dapur,kasir,meja']], function(){
     Route::get('/dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
 
     Route::get('/kategori_produk', [KategoriProdukController::class, 'index'])->name('kategoriproduk.index');
@@ -60,6 +64,13 @@ Route::group(['middleware' => ['auth', 'checkRole:owner,meja']], function(){
     Route::get('/order/checkout/delete/{id}', [PesananController::class, 'delete'])->name('order.delete');
     Route::post('/order/checkout/update_jumlah', [PesananController::class, 'update_jumlah'])->name('order.update_jumlah');
     Route::post('/order/checkout/proses', [PesananController::class, 'proses'])->name('order.proses');
+
+    Route::get('/pesanan', [ProdukOrderController::class, 'index'])->name('pesanan.index');
+    Route::get('/pesanan/pesanan_dalam_antrian/{id}', [ProdukOrderController::class, 'pesanan_dalam_antrian'])->name('pesanan.pesanan_dalam_antrian');
+    Route::get('/pesanan/pesanan_sedang_diolah/{id}', [ProdukOrderController::class, 'pesanan_sedang_diolah'])->name('pesanan.pesanan_sedang_diolah');
+    Route::get('/pesanan/pesanan_diantar/{id}', [ProdukOrderController::class, 'pesanan_diantar'])->name('pesanan.pesanan_diantar');
+    Route::get('/pesanan/pesanan_selesai/{id}', [ProdukOrderController::class, 'pesanan_selesai'])->name('pesanan.pesanan_selesai');
+    Route::get('/pesanan/pesanan_berakhir/{id}', [ProdukOrderController::class, 'pesanan_berakhir'])->name('pesanan.pesanan_berakhir');
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');

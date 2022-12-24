@@ -12,7 +12,11 @@ class ProfileController extends Controller
     //
     public function index()
     {
-        return view('profile.index');
+        if(Auth::user()->role != 'meja'){
+            return view('profile.index');
+        }else{
+            return redirect()->route('order.index')->with('info','Maaf, anda tidak memiliki hak akses');
+        }
     }
 
     public function update(Request $request)

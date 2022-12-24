@@ -26,7 +26,7 @@ class MejaController extends Controller
                 'email' => $request->email,
                 'no_hp' => $request->no_hp,
                 'role' => 'meja',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('MejaPassword@@'),
                 'avatar' => 'user2.svg',
                 'qrcode' => $date.'qrcode.svg'
             ]);

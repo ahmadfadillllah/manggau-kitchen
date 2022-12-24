@@ -46,4 +46,32 @@ class AuthController extends Controller
 
         return redirect('/');
     }
+
+    public function login_qrcode()
+    {
+        return view('auth.login_qrcode');
+    }
+
+    public function login_qrcode_post(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            if(Auth::user()->role == 'meja'){
+                return redirect()->route('order.index');
+            }else{
+                return redirect()->route('dashboard.index');
+            }
+        }
+
+        return back()->withErrors([
+            'email' => 'Email tidak ditemukan',
+            'password' => 'Password salah',
+        ])->onlyInput('email', 'password');
+    }
 }

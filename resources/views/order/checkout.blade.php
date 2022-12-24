@@ -18,6 +18,7 @@
                                 <form action="{{ route('order.proses') }}" method="post">
                                     @csrf
                                     <ul class="list-group mb-3">
+                                        @php $total = 0 @endphp
                                         @foreach ($pesanan as $ps)
                                         <input type="text" name="id[]" value="{{ $ps->id }}" hidden>
                                         <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -28,10 +29,11 @@
                                             </div>
                                             <span class="text-muted">@currency($ps->produk->harga) x {{ $ps->jumlah }}</span>
                                         </li>
+                                        @php $total += $ps->produk->harga * $ps->jumlah @endphp
                                         @endforeach
                                         <li class="list-group-item d-flex justify-content-between">
                                             <span>Total</span>
-                                            <strong>@currency($ps->produk->harga * $ps->jumlah)</strong>
+                                            <strong>@currency($total)</strong>
                                         </li>
                                     </ul>
                                     <a type="button" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#beforeProsess">Pesan</a>
@@ -64,28 +66,35 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($pesanan2 as $ps)
+                                    @php $total2 = 0 @endphp
+                                    @foreach ($pesanan2 as $ps2)
                                     <tr>
                                         <td><strong>{{ $loop->iteration }}</strong></td>
-                                        <td>{{ $ps->produk->nama }}</td>
-                                        <td>@currency($ps->produk->harga)</td>
-                                        <td>{{ $ps->jumlah }}</td>
+                                        <td>{{ $ps2->produk->nama }}</td>
+                                        <td>@currency($ps2->produk->harga)</td>
+                                        <td>{{ $ps2->jumlah }}</td>
                                         <td>
-                                            @if ($ps->status == 'Pesanan Masuk')
-                                            <span class="badge light badge-info">{{ $ps->status }}</span>
-                                            @elseif ($ps->status == 'Pesanan Dalam Antrian')
-                                            <span class="badge light badge-secondary">{{ $ps->status }}</span>
-                                            @elseif ($ps->status == 'Pesanan Sedang Diolah')
-                                            <span class="badge light badge-primary">{{ $ps->status }}</span>
-                                            @elseif ($ps->status == 'Pesanan Diantar')
-                                            <span class="badge light badge-dark">{{ $ps->status }}</span>
-                                            @elseif ($ps->status == 'Pesanan Selesai')
-                                            <span class="badge light badge-success">{{ $ps->status }}</span>
+                                            @if ($ps2->status == 'Pesanan Masuk')
+                                            <span class="badge light badge-info">{{ $ps2->status }}</span>
+                                            @elseif ($ps2->status == 'Pesanan Dalam Antrian')
+                                            <span class="badge light badge-secondary">{{ $ps2->status }}</span>
+                                            @elseif ($ps2->status == 'Pesanan Sedang Diolah')
+                                            <span class="badge light badge-primary">{{ $ps2->status }}</span>
+                                            @elseif ($ps2->status == 'Pesanan Diantar')
+                                            <span class="badge light badge-dark">{{ $ps2->status }}</span>
+                                            @elseif ($ps2->status == 'Pesanan Selesai')
+                                            <span class="badge light badge-success">{{ $ps2->status }}</span>
                                             @endif
                                         </td>
                                     </tr>
+                                    @php $total2 += $ps2->produk->harga * $ps2->jumlah @endphp
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <strong><td>Total : @currency($total2)</td></strong>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

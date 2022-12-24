@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         User::insert([
             'name' => 'Owner',
             'email' => 'owner@admin.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('password345@'),
             'no_hp' => '089695276227',
             'role' => 'owner',
             'avatar' => 'pic1.svg'

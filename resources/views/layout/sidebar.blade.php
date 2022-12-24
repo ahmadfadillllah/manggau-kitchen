@@ -13,6 +13,7 @@
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
+                            @if (Auth::user()->role != 'meja')
                             <a href="{{ route('profile.index') }}" class="dropdown-item ai-icon">
                                 <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18"
                                     height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -22,6 +23,7 @@
                                 </svg>
                                 <span class="ms-2">Profile </span>
                             </a>
+                            @endif
                             <a href="{{ route('logout') }}" class="dropdown-item ai-icon">
                                 <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18"
                                     height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -34,12 +36,14 @@
                             </a>
                         </div>
                     </li>
+                    @if (Auth::user()->role != 'meja')
                     <li>
                         <a href="{{ route('dashboard.index') }}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-025-dashboard"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
+                    @endif
                     @if (Auth::user()->role == 'meja')
                     <li>
                         <a href="{{ route('order.index') }}" class="ai-icon" aria-expanded="false">
@@ -48,6 +52,7 @@
                         </a>
                     </li>
                     @endif
+                    @if (Auth::user()->role == 'owner' or Auth::user()->role == 'dapur')
                     <li>
                         <a href="{{ route('kategoriproduk.index') }}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-043-menu"></i>
@@ -60,18 +65,31 @@
                             <span class="nav-text">Produk</span>
                         </a>
                     </li>
+                    @endif
+                    @if (Auth::user()->role == 'owner')
                     <li>
                         <a href="{{ route('pegawai.index') }}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-086-star"></i>
                             <span class="nav-text">Pegawai</span>
                         </a>
                     </li>
+                    @endif
+                    @if (Auth::user()->role == 'owner')
                     <li>
                         <a href="{{ route('meja.index') }}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-045-heart"></i>
                             <span class="nav-text">Meja</span>
                         </a>
                     </li>
+                    @endif
+                    @if (Auth::user()->role == 'owner' or Auth::user()->role == 'dapur')
+                    <li>
+                        <a href="{{ route('pesanan.index') }}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-013-checkmark"></i>
+                            <span class="nav-text">Pesanan</span>
+                        </a>
+                    </li>
+                    @endif
                 </ul>
             </div>
         </div>

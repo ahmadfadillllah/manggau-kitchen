@@ -40,7 +40,7 @@
                                                             src="{{ asset('dashboard/xhtml') }}/images/profile/pic1.svg">
                                                     </div>
                                                     <div class="media-body">
-                                                        <h6 class="mb-1">Selamat Datang!</h6>
+                                                        <h6 class="mb-1">Selamat Datang, gunakan web ini dengan bijak!</h6>
                                                         <small class="d-block">Owner</small>
                                                     </div>
                                                 </div>

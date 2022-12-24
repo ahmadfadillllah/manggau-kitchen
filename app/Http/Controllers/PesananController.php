@@ -42,6 +42,8 @@ class PesananController extends Controller
     public function checkout()
     {
         $pesanan = Pesanan::with('produk')->where('user_id', Auth::user()->id)->where('status', '=', 'Pesanan Masuk')->get();
+        // $total = $pesanan->produk->harga * $pesanan->jumlah;
+        // dd($pesanan);
         $pesanan2 = Pesanan::with('produk')->where('user_id', Auth::user()->id)->where('status', '!=', 'Pesanan Masuk')->where('status', '!=', 'Pesanan Berakhir')->get();
         if($pesanan->isEmpty() and $pesanan2->isEmpty()){
             return redirect()->route('order.index')->with('info', 'Pesanan Masih Kosong');

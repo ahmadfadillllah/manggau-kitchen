@@ -16,8 +16,8 @@
 
                         </div>
                         <div>
-                            <h2 class="text-white invoice-num">2478</h2>
-                            <span class="text-white fs-18">Total Invoices</span>
+                            <h2 class="text-white invoice-num">{{ $total_order }}</h2>
+                            <span class="text-white fs-18">Total Order</span>
                         </div>
                     </div>
                 </div>
@@ -35,8 +35,8 @@
 
                         </div>
                         <div>
-                            <h2 class="text-white invoice-num">983</h2>
-                            <span class="text-white fs-18">Paid Invoices</span>
+                            <h2 class="text-white invoice-num">{{ $pesanan_masuk }}</h2>
+                            <span class="text-white fs-18">Pesanan Masuk</span>
                         </div>
                     </div>
                 </div>
@@ -54,8 +54,8 @@
 
                         </div>
                         <div>
-                            <h2 class="text-white invoice-num">1256</h2>
-                            <span class="text-white fs-18">Unpaid Invoices</span>
+                            <h2 class="text-white invoice-num">{{ $pesanan_diolah }}</h2>
+                            <span class="text-white fs-18">Pesanan Sedang Diolah</span>
                         </div>
                     </div>
                 </div>
@@ -71,8 +71,8 @@
 
                         </div>
                         <div>
-                            <h2 class="text-white invoice-num">652</h2>
-                            <span class="text-white fs-18">Total Invoices Sent</span>
+                            <h2 class="text-white invoice-num">{{ $pesanan_selesai }}</h2>
+                            <span class="text-white fs-18">Pesanan Selesai</span>
                         </div>
                     </div>
                 </div>
