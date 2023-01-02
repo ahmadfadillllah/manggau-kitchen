@@ -10,7 +10,7 @@ class ProdukOrderController extends Controller
     //
     public function index()
     {
-        $pesanan = Pesanan::with('produk', 'user')->get();
+        $pesanan = Pesanan::with('produk', 'user')->where('status', '!=', 'Pesanan Berakhir')->get();
         return view('pesanan.index', compact('pesanan'));
     }
 

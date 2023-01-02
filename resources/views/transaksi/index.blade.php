@@ -12,7 +12,6 @@
                             <table class="table table-sm mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="align-middle">No. Antrian</th>
                                         <th class="align-middle">Order</th>
                                         <th class="align-middle pe-7">Tanggal</th>
                                         <th class="align-middle" style="min-width: 12.5rem;">Produk</th>
@@ -26,7 +25,6 @@
                                 <tbody id="orders">
                                     @foreach ($pesanan as $ps)
                                     <tr class="btn-reveal-trigger">
-                                        <td class="py-2">{{ $loop->iteration }}</td>
                                         <td class="py-2"><strong>{{ $ps->user->name }}</strong></td>
 
                                         <td class="py-2">{{ $ps->updated_at }}</td>

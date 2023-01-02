@@ -40,6 +40,7 @@
                                                 alt=""></a>
                                     </div>
                                     <h4 class="text-center mb-4">Masuk menggunakan Qr Code</h4>
+                                    <a href="{{ route('login_page') }}" class="text-center mb-4"><p>Login menggunakan Email</p></a>
                                     @include('auth.notif.index')
                                     <form action="{{ route('login_page.post') }}" method="POST">
                                         @csrf

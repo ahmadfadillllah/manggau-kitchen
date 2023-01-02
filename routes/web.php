@@ -10,6 +10,7 @@ use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProdukOrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,6 +72,8 @@ Route::group(['middleware' => ['auth', 'checkRole:owner,dapur,kasir,meja']], fun
     Route::get('/pesanan/pesanan_diantar/{id}', [ProdukOrderController::class, 'pesanan_diantar'])->name('pesanan.pesanan_diantar');
     Route::get('/pesanan/pesanan_selesai/{id}', [ProdukOrderController::class, 'pesanan_selesai'])->name('pesanan.pesanan_selesai');
     Route::get('/pesanan/pesanan_berakhir/{id}', [ProdukOrderController::class, 'pesanan_berakhir'])->name('pesanan.pesanan_berakhir');
+
+    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');

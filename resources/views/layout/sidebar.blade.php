@@ -90,6 +90,14 @@
                         </a>
                     </li>
                     @endif
+                    @if (Auth::user()->role == 'owner' or Auth::user()->role == 'kasir')
+                    <li>
+                        <a href="{{ route('transaksi.index') }}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-013-checkmark"></i>
+                            <span class="nav-text">Transaksi</span>
+                        </a>
+                    </li>
+                    @endif
                 </ul>
             </div>
         </div>
