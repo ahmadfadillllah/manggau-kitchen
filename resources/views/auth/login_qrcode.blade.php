@@ -99,7 +99,7 @@
             console.log(`Code matched = ${decodedText}`, decodedResult);
                 $.ajax({
                     type: "POST",
-                    cache: false,
+                    cache: true,
                     url: "{{ route('login_qrcode.post') }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
