@@ -107,8 +107,14 @@
                         "password": "MejaPassword@@",
                     },
                     success: function (data) {
-                        // console.log(data);
-                        $(location).attr('href', '{{ route('order.index') }}');
+                        Swal.fire(
+                            'Berhasil login!',
+                            'Halaman ini akan teredirect automatis',
+                            'success'
+                            )
+                        setInterval(() => {
+                            $(location).attr('href', '{{ route('order.index') }}');
+                        }, 3000);
 
                     }
                 })
