@@ -7,7 +7,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                {{ QrCode::format('png')->generate($p->qrcode); }}
+                {!! QrCode::size(300)->generate($p->qrcode); !!}
                 <a href="{{ asset('dashboard/xhtml/images/qrcode') }}/{{ $p->qrcode }}" class="btn btn-outline-secondary btn-rounded mt-3 px-5" target="_blank">Download QrCode</a>
             </div>
         </div>
