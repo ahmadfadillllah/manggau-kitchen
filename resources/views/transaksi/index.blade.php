@@ -14,7 +14,7 @@
                                     <tr>
                                         <th class="align-middle">Order</th>
                                         <th class="align-middle pe-7">Tanggal</th>
-                                        <th class="align-middle" style="min-width: 12.5rem;">Produk</th>
+                                        <th class="align-middle">Produk</th>
                                         <th class="align-middle text-end">Harga</th>
                                         <th class="align-middle text-end">Jumlah</th>
                                         <th class="align-middle text-end">Status</th>

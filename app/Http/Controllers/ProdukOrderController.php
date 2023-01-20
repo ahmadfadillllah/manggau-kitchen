@@ -60,6 +60,7 @@ class ProdukOrderController extends Controller
 
     public function pesanan_berakhir($id)
     {
+        dd($id);
         try {
             Pesanan::where('id', $id)->update(['status' => 'Pesanan Berakhir']);
 
