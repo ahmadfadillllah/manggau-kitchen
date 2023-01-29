@@ -57,9 +57,10 @@ class PesananController extends Controller
             foreach($request->id as $key=>$value){
                 $pesanan = Pesanan::find($request->id[$key]);
                 $pesanan->jumlah = $request->jumlah[$key];
+                $pesanan->catatan = $request->catatan[$key];
                 $pesanan->save();
             }
-            return redirect()->back()->with('success', 'Berhasil update jumlah pesanan');
+            return redirect()->back()->with('success', 'Berhasil update pesanan');
         } catch (\Throwable $th) {
             return redirect()->back()->with(['info' => $th->getMessage()]);
         }

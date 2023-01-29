@@ -26,6 +26,7 @@
                                                 <a href="{{ route('order.delete', $ps->id) }}"><span class="badge light badge-warning">X</span></a>
                                                 <h6 class="my-0">{{ $ps->produk->nama }}</h6>
                                                 <small class="text-muted">{{ $ps->produk->deskripsi }}</small>
+                                                <p>Catatan: {{ $ps->catatan }}</p>
                                             </div>
                                             <span class="text-muted">@currency($ps->produk->harga) x {{ $ps->jumlah }}</span>
                                         </li>
@@ -62,6 +63,7 @@
                                         <th><strong>Nama</strong></th>
                                         <th><strong>Harga</strong></th>
                                         <th><strong>Jumlah</strong></th>
+                                        <th><strong>Catatan</strong></th>
                                         <th><strong>Status</strong></th>
                                     </tr>
                                 </thead>
@@ -73,6 +75,7 @@
                                         <td>{{ $ps2->produk->nama }}</td>
                                         <td>@currency($ps2->produk->harga)</td>
                                         <td>{{ $ps2->jumlah }}</td>
+                                        <td>{{ $ps2->catatan }}</td>
                                         <td>
                                             @if ($ps2->status == 'Pesanan Masuk')
                                             <span class="badge light badge-info">{{ $ps2->status }}</span>

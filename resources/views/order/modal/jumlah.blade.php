@@ -12,13 +12,17 @@
                     @foreach ($pesanan as $ps)
                     <input type="text" name="id[]" value="{{ $ps->id }}" hidden>
                     <div class="row">
-                        <div class="mb-3 col-md-6">
+                        <div class="mb-3 col-md-4">
                             <label class="form-label">Produk</label>
                             <input type="text" class="form-control" value="{{ $ps->produk->nama }}" readonly>
                         </div>
-                        <div class="mb-3 col-md-6">
+                        <div class="mb-3 col-md-2">
                             <label class="form-label">Jumlah</label>
                             <input type="number" class="form-control" name="jumlah[]" min="0" value="{{ $ps->jumlah }}">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">Catatan</label>
+                            <input type="text" class="form-control" name="catatan[]" value="{{ $ps->catatan }}">
                         </div>
                     </div>
                     @endforeach

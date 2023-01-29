@@ -18,6 +18,7 @@ class CreatePesananTable extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('produk_id')->constrained('produk')->cascadeOnDelete();
             $table->integer('jumlah');
+            $table->string('catatan')->nullable();
             $table->string('status');
             $table->timestamps();
         });
