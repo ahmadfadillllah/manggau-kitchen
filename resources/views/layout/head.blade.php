@@ -39,6 +39,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('dashboard/xhtml') }}/vendor/jquery-nice-select/css/nice-select.css"
         rel="stylesheet">
+    <link href="{{ asset('dashboard/xhtml') }}/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('dashboard/xhtml') }}/vendor/nouislider/nouislider.min.css">
     <!-- Style css -->
 

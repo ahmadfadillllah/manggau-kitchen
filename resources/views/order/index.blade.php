@@ -46,49 +46,51 @@
             </div>
         </div>
         <div class="row">
-            @foreach ($produk as $p)
-            <div class="col-lg-12 col-xl-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row m-b-30">
-                            <div class="col-md-5 col-xxl-12">
-                                <div class="new-arrival-product mb-4 mb-xxl-4 mb-md-0">
-                                    <div class="new-arrivals-img-contnent">
-                                        <img class="img-fluid" src="{{ asset('dashboard/xhtml') }}/images/card/{{ $p->gambar }}" alt="">
+            <div class="card-slider owl-carousel">
+                @foreach ($produk as $p)
+                <div class="col-lg-12 col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row m-b-30">
+                                <div class="col-md-5 col-xxl-12">
+                                    <div class="new-arrival-product mb-4 mb-xxl-4 mb-md-0">
+                                        <div class="new-arrivals-img-contnent">
+                                            <img class="img-fluid" src="{{ asset('dashboard/xhtml') }}/images/card/{{ $p->gambar }}" alt="">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-7 col-xxl-12">
-                                <div class="new-arrival-content position-relative">
-                                    <h4><a href="#">{{ $p->nama }}</a></h4>
-                                    <div class="comment-review star-rating">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star-half-empty"></i></li>
-                                        </ul>
-                                        <p class="price">@currency($p->harga)</p>
+                                <div class="col-md-7 col-xxl-12">
+                                    <div class="new-arrival-content position-relative">
+                                        <h4><a href="#">{{ $p->nama }}</a></h4>
+                                        <div class="comment-review star-rating">
+                                            <ul>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star-half-empty"></i></li>
+                                            </ul>
+                                            <p class="price">@currency($p->harga)</p>
+                                        </div>
+                                        <p>Availability: @if ($p->status == 'Tersedia')<span class="badge badge-lg light badge-primary">{{ $p->status }}</span>
+                                            @else<span class="badge badge-lg light badge-warning">{{ $p->status }}</span>
+                                            @endif</p>
+                                        <p>Kategori: <span class="item">{{ $p->kategori->nama }}</span> </p>
+                                        <p class="text-content">{{ $p->deskripsi }}</p>
                                     </div>
-                                    <p>Availability: @if ($p->status == 'Tersedia')<span class="badge badge-lg light badge-primary">{{ $p->status }}</span>
-                                        @else<span class="badge badge-lg light badge-warning">{{ $p->status }}</span>
-                                        @endif</p>
-                                    <p>Kategori: <span class="item">{{ $p->kategori->nama }}</span> </p>
-                                    <p class="text-content">{{ $p->deskripsi }}</p>
                                 </div>
+                                @if ($p->status == 'Tersedia')
+                                <div class="card-footer">
+                                    <a href="{{ route('order.add', $p->id) }}" type="button" class="btn btn-primary">Pesan</a>
+                                    {{-- @include('produk.modal.cart') --}}
+                                </div>
+                                @endif
                             </div>
-                            @if ($p->status == 'Tersedia')
-                            <div class="card-footer">
-                                <a href="{{ route('order.add', $p->id) }}" type="button" class="btn btn-primary">Pesan</a>
-                                {{-- @include('produk.modal.cart') --}}
-                            </div>
-                            @endif
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
     </div>
 </div>

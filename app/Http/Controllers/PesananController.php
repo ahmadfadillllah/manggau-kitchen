@@ -10,9 +10,14 @@ use Illuminate\Support\Facades\Auth;
 class PesananController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
-        $produk = Produk::all();
+        // dd($request->all());
+        if($request->has('search')){
+            $produk = Produk::where('nama', 'like','%'.$request->search.'%')->get();
+        }else{
+            $produk = Produk::all();
+        }
         $pesanan = Pesanan::with('produk')->where('user_id', Auth::user()->id)->where('status', '=', 'Pesanan Masuk')->get();
 
         $cart = Pesanan::with('produk')->where('user_id', Auth::user()->id)->where('status', '=', 'Pesanan Masuk')->count();

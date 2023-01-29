@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth', 'checkRole:owner,dapur,kasir,meja']], fun
     Route::post('/meja/edit/{id}', [MejaController::class, 'edit'])->name('meja.edit');
 
     Route::get('/order', [PesananController::class, 'index'])->name('order.index');
+    Route::get('/order/search', [PesananController::class, 'index'])->name('order.search');
     Route::get('/order/add/{id}', [PesananController::class, 'add'])->name('order.add');
     Route::get('/order/checkout', [PesananController::class, 'checkout'])->name('order.checkout');
     Route::get('/order/checkout/delete/{id}', [PesananController::class, 'delete'])->name('order.delete');

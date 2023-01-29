@@ -46,9 +46,15 @@
                     @endif
                     @if (Auth::user()->role == 'meja')
                     <li>
+                        <form action="{{ route('order.index') }}" method="get">
+                            <input type="text" name="search" class="form-control" placeholder="Cari produk...">
+                        </form>
+                    </li>
+                    <br>
+                    <li>
                         <a href="{{ route('order.index') }}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Order</span>
+                            <span class="nav-text">Daftar Produk</span>
                         </a>
                     </li>
                     @endif
