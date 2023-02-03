@@ -75,7 +75,7 @@
 				method: "GET",
 				data: {user_id: user_id},
 				success: function(data){
-                    let total;
+                    var total = 0;
                     console.log(data);
                     document.getElementById('namameja').innerHTML = data[0]['user']['name'];
                     document.getElementById('tombolbutton').innerHTML = `<button type="submit" class="btn btn-outline-info d-block btn-lg col-lg-12" onclick="return confirm('Apakah anda yakin menyelesaikan pesanan tersebut? pastikan meja tersebut telah membayar!!')">Selesai</button>
@@ -95,7 +95,7 @@
                         <span class="fs-16 text-black font-w400">${convertToRupiah(item.produk.harga*item.jumlah)}</span>
                     </div>
                         `)
-                        total = item.produk.harga * item.jumlah
+                        total += parseInt(item.produk.harga) * parseInt(item.jumlah);
                     });
                     document.getElementById('totalorder').innerHTML = convertToRupiah(total);
                         console.log(total);

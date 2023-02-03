@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pesanan;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class PesananMasukController extends Controller
@@ -11,7 +12,10 @@ class PesananMasukController extends Controller
     //
     public function index()
     {
-        $meja = User::with('pesanan')->where('role', 'meja')->whereHas('pesanan')->get();
+        $meja = User::with('pesanan')->where('role', 'meja')->whereHas('pesanan', function (Builder $query) {
+            $query->where('status', '!=', 'Pesanan Berakhir');
+        })->get();
+        // dd($meja);
 
         return view('pesananmasuk.index', compact('meja'));
     }
