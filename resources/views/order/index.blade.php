@@ -46,12 +46,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="card-slider owl-carousel">
                 @foreach ($produk as $p)
-                <div class="col-lg-12 col-xl-12">
+                <div class="col-lg-6 col-xl-6 col-6">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row m-b-30">
+                            <div class="row m-b-20">
                                 <div class="col-md-5 col-xxl-12">
                                     <div class="new-arrival-product mb-4 mb-xxl-4 mb-md-0">
                                         <div class="new-arrivals-img-contnent">
@@ -90,7 +89,6 @@
                     </div>
                 </div>
                 @endforeach
-            </div>
         </div>
     </div>
 </div>

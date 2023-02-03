@@ -88,7 +88,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (Auth::user()->role == 'owner' or Auth::user()->role == 'dapur')
+                    @if (Auth::user()->role == 'owner' or Auth::user()->role == 'dapur' or Auth::user()->role == 'kasir')
                     <li>
                         <a href="{{ route('pesanan.index') }}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-013-checkmark"></i>
@@ -96,6 +96,16 @@
                         </a>
                     </li>
                     @endif
+
+                    @if (Auth::user()->role == 'owner' or Auth::user()->role == 'kasir')
+                    <li>
+                        <a href="{{ route('pesananmasuk.index') }}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-013-checkmark"></i>
+                            <span class="nav-text">Pesanan Masuk</span>
+                        </a>
+                    </li>
+                    @endif
+
                     @if (Auth::user()->role == 'owner' or Auth::user()->role == 'kasir')
                     <li>
                         <a href="{{ route('transaksi.index') }}" class="ai-icon" aria-expanded="false">

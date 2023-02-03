@@ -7,6 +7,7 @@ use App\Http\Controllers\MejaController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\PesananMasukController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProdukOrderController;
 use App\Http\Controllers\ProfileController;
@@ -73,6 +74,9 @@ Route::group(['middleware' => ['auth', 'checkRole:owner,dapur,kasir,meja']], fun
     Route::get('/pesanan/pesanan_diantar/{id}', [ProdukOrderController::class, 'pesanan_diantar'])->name('pesanan.pesanan_diantar');
     Route::get('/pesanan/pesanan_selesai/{id}', [ProdukOrderController::class, 'pesanan_selesai'])->name('pesanan.pesanan_selesai');
     Route::get('/pesanan/pesanan_berakhir/{id}', [ProdukOrderController::class, 'pesanan_berakhir'])->name('pesanan.pesanan_berakhir');
+
+    Route::get('/pesanan_masuk', [PesananMasukController::class, 'index'])->name('pesananmasuk.index');
+    Route::post('/pesanan_masuk/pesanan_berakhir', [PesananMasukController::class, 'pesanan_berakhir'])->name('pesananmasuk.pesanan_berakhir');
 
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
 
