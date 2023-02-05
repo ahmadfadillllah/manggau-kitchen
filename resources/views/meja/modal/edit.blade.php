@@ -25,20 +25,6 @@
                     </div>
                     <div class="col-xl-12">
                         <div class="mb-12 row">
-                            <label class="col-lg-4 col-form-label" for="validationCustom01">Email
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-lg-12">
-                                <input type="email" class="form-control" name="email"
-                                    value="{{ $p->email }}" required>
-                                <div class="invalid-feedback">
-                                    Masukkan Email
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-12">
-                        <div class="mb-12 row">
                             <label class="col-lg-4 col-form-label" for="validationCustom01">No.Handphone
                                 <span class="text-danger">*</span>
                             </label>

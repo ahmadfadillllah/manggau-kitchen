@@ -43,19 +43,16 @@ class MejaController extends Controller
     {
         $request->validate([
             'name' => ['required'],
-            'email' => ['required'],
             'no_hp' => ['required'],
         ],
         [
             'name.required' => 'Tidak boleh kosong',
-            'email.required' => 'Tidak boleh kosong',
             'no_hp.required' => 'Tidak boleh kosong',
         ]);
 
         try {
             User::whereId($id)->update([
                 'name' => $request->name,
-                'email' => $request->email,
                 'no_hp' => $request->no_hp,
             ]);
 
