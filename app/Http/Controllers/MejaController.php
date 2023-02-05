@@ -12,7 +12,7 @@ class MejaController extends Controller
 {
     public function index()
     {
-        $meja = User::where('role','=', 'meja')->get();
+        $meja = User::where('role', 'meja')->get();
         return view('meja.index', compact('meja'));
     }
 
